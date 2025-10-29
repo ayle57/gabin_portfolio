@@ -1,0 +1,282 @@
+/* *** Imports *** */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* *** Font family *** */
+:root {
+    --font-sans: "Work Sans", sans-serif;
+    --font-mono: "Fira Code", monospace;
+
+    --font-size: 14px;
+
+    --black-900: #090909;
+
+    --white-900: #f5f5f5;
+
+    --border-radius-m: 24px;
+
+    --green: #00ffae;
+}
+
+/* *** Reset CSS *** */
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+/* *** Normalize CSS *** */
+body {
+    line-height: 1.4;
+
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
+
+    color: var(--black-900);
+
+    background-color: var(--white-900);
+}
+
+.section {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Button */
+.btn {
+    display: inline-flex;
+
+    padding: 12px 24px;
+    border: none;
+
+    border-radius: var(--border-radius-m);
+
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--black-900);
+    color: var(--white-900);
+}
+
+.btn-primary:hover {
+    background-color: #333333;
+}
+
+.btn-secondary {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: var(--black-900);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-blurred {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--black-900);
+}
+
+/* *** Navbar *** */
+.navbar {
+    width: 100%;
+    padding: 5px 5vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 90px;
+}
+
+.navbar .navbar-brands {
+    flex: 0 0 25%;
+    max-width: 25%;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar .navbar-brands img {
+    display: inline;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    transition: transform cubic-bezier(.64,.49,.23,.71) 0.75s;
+}
+
+.navbar .navbar-brands img:hover {
+    transform: rotate(360deg);
+}
+
+html {
+    height: 1000vh;
+}
+
+.navbar .navbar-links {
+    flex: 0 0 45%;
+    max-width: 45%;
+
+    position: fixed;
+    overflow: hidden;
+    width: 45%;
+    transform: translateX(50%);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 45px;
+
+    gap: 24px;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-m);
+}
+
+.navbar .navbar-links::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: var(--green);
+    border-radius: 50%;
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+}
+
+.navbar .navbar-links.scrolled::before {
+    width: 300%;
+    height: 300%;
+}
+
+.navbar .navbar-links li a {
+    color: var(--black-900);
+
+    font-weight: 400;
+    font-family: var(--font-sans), sans-serif;
+
+    transition: 0.3s ease;
+}
+
+.navbar .navbar-links li a:hover {
+    color: var(--green);
+}
+
+.navbar .navbar-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    flex: 0 0 25%;
+    max-width: 25%;
+
+    height: 45px;
+}
+
+.navbar .navbar-button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    height: 100%;
+    padding: 0 24px;
+
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.navbar .navbar-button a::before {
+    content: "";
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: var(--green);
+    border-radius: 50%;
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: -1;
+}
+
+.navbar .navbar-button a:hover:before {
+    width: 400px;
+    height: 400px;
+}
+
+.navbar .navbar-button a:hover {
+    color: #0d0d0d;
+}
+
+.navbar .navbar-button a span {
+    position: relative;
+    z-index: 1;
+}
+
+/* *** Hero Section *** */
+.heroSection {
+    background: url("public/hero.png") no-repeat fixed center right;
+    background-clip: border-box;
+    background-size: cover;
+    height: 90vh;
+}
+
+.heroSection-inner {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.heroSection-content {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 5vw;
+}
+
+.heroSection-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+
+.heroSection-content h1 span {
+    font-family: var(--font-mono), monospace;
+    font-style: italic;
+    color: var(--green);
+}
+
+.heroSection-content p {
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.heroSection-content .btn-container {
+    gap: 0 16px;
+}
