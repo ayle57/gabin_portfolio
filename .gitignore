@@ -1,0 +1,9 @@
+# idea
+.idea
+
+# ds_store
+.DS_Store
+
+# environment
+.env
+.env.local
