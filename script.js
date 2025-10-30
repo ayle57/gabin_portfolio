@@ -18,3 +18,15 @@ window.addEventListener('scroll', () => {
         navbarLinks.classList.remove('scrolled');
     }
 });
+
+// Color effect based on scroll position on span elements
+const colorSpans = document.querySelectorAll('.numbersSection-content h2 span');
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    colorSpans.forEach((span, index) => {
+        const baseHue = 200;
+        const hueOffset = (scrollY / 5 + index * 40) % 360;
+        span.style.color = `hsl(${baseHue + hueOffset}, 70%, 50%)`;
+    });
+});

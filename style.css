@@ -93,6 +93,33 @@ body {
     color: var(--black-900);
 }
 
+h2.section-title {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 700;
+
+    padding: 0 1vw;
+
+    position: relative;
+
+    font-family: var(--font-mono), sans-serif;
+}
+
+h2.section-title::before {
+    content: "";
+    display: inline-block;
+
+    height: 2px;
+    width: 100%;
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    background-color: var(--green);
+    position: absolute;
+}
+
 /* *** Navbar *** */
 .navbar {
     width: 100%;
@@ -122,11 +149,7 @@ body {
 }
 
 .navbar .navbar-brands img:hover {
-    transform: rotate(360deg);
-}
-
-html {
-    height: 1000vh;
+    transform: rotate(360deg) scale(5);
 }
 
 .navbar .navbar-links {
@@ -148,6 +171,7 @@ html {
 
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius-m);
+    z-index: 10;
 }
 
 .navbar .navbar-links::before {
@@ -167,6 +191,10 @@ html {
 .navbar .navbar-links.scrolled::before {
     width: 300%;
     height: 300%;
+}
+
+.navbar .navbar-links.scrolled a:hover {
+    color: var(--white-900);
 }
 
 .navbar .navbar-links li a {
@@ -241,7 +269,7 @@ html {
     background: url("public/hero.png") no-repeat fixed center right;
     background-clip: border-box;
     background-size: cover;
-    height: 90vh;
+    height: 100vh;
 }
 
 .heroSection-inner {
@@ -279,4 +307,46 @@ html {
 
 .heroSection-content .btn-container {
     gap: 0 16px;
+}
+
+/* *** Colors Section *** */
+.colorsSection {
+    padding: 10vh 1vw;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.colorsSection-inner {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    padding: 2.5vh 2.5vw;
+
+    background: url("public/gabin_epstein.png") no-repeat center;
+    background-size: cover;
+}
+
+.colorsSection-content h2 {
+    padding: 16px 32px;
+    font-size: calc(7500vw / 1018);
+    color: var(--white-900);
+    z-index: 0;
+}
+
+.colorsSection-content h2 span {
+    font-family: var(--font-mono), monospace;
+    font-style: italic;
+    color: var(--green);
+}
+
+/* *** About Section *** */
+section.section.aboutSection {
+    padding: 10vh 5vw;
 }
