@@ -361,6 +361,8 @@ h2.section-title::before {
 
     background: url("public/gabin_epstein.png") no-repeat center;
     background-size: cover;
+
+    border-radius: var(--border-radius-m);
 }
 
 .colorsSection-content h2 {
@@ -617,7 +619,26 @@ div.aboutSection-container div.aboutSection-list ul li img {
 
 /* *** Contact Section *** */
 .contactSection {
-    margin: 5vh 5vw;
+    margin: 25vh 0 0 0;
+    padding: 0 5vw 5vh 5vw;
+    position: relative;
+    background: var(--green);
+}
+
+.contactSection::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+
+    right: 0;
+    top: -25vh;
+    left: 0;
+
+    height: 25vh;
+    width: 100%;
+
+    background-size: cover;
+    background-image: url("public/wave.svg");
 }
 
 .contactSection-inner div.contactSection-header {
@@ -627,17 +648,98 @@ div.aboutSection-container div.aboutSection-list ul li img {
 }
 
 .contactSection-inner div.contactSection-header div.contactSection-content {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.contactSection-inner div.contactSection-header div.contactSection-content p {
+    font-size: 15px;
+    font-family: var(--font-sans), sans-serif;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .contactSection-inner div.contactSection-header div.contactSection-image {
-    flex: 0 0 40%;
-    max-width: 40%;
+    flex: 0 0 30%;
+    max-width: 30%;
+
+    text-align: end;
 }
 
 .contactSection-inner div.contactSection-header div.contactSection-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 50%;
+}
+
+.contactSection-inner div.contactSection-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 5vh;
+}
+
+.contactSection-inner div.contactSection-bottom  .card {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+
+    background-color: var(--white-900);
+
+    padding: 32px;
+    border-radius: var(--border-radius-m);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+.card .form-group {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.card .form-group label {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.card .form-group input, .card .form-group textarea {
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    background-color: #fff;
+    border: 1px solid rgb(211, 211, 211);
+
+    font-size: 14px;
+    font-family: var(--font-mono), sans-serif;
+
+    outline: none;
+
+    transition: border-color 0.15s;
+
+    -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.card .form-group textarea {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.card .form-group input:focus, .card .form-group textarea:focus {
+    border-color: var(--green);
+}
+
+.contactSection-inner div.contactSection-bottom  .card:last-of-type {
+    background-color: var(--black-900);
+    color: var(--white-900);
 }
