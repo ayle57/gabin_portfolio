@@ -10,7 +10,7 @@
 
     --black-900: #090909;
 
-    --white-900: #f5f5f5;
+    --white-900: #f9f9f9;
 
     --border-radius-m: 24px;
 
@@ -62,7 +62,7 @@ body {
 
     font-size: 14px;
     font-weight: 500;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
 
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -79,7 +79,7 @@ body {
 
 .btn-secondary {
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.75);
     color: var(--black-900);
 }
 
@@ -93,12 +93,43 @@ body {
     color: var(--black-900);
 }
 
+@keyframes icon-right-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.btn-icon {
+    gap: 0 8px;
+}
+
+.btn-icon img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+}
+
+.btn-icon:hover img {
+    animation: icon-right-move 0.5s ease-in-out infinite;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    gap: 0 16px;
+}
+
 h2.section-title {
-    display: inline-block;
+    display: inline-flex;
+    text-align: center;
     font-size: 32px;
     font-weight: 700;
-
-    padding: 0 1vw;
 
     position: relative;
 
@@ -110,7 +141,7 @@ h2.section-title::before {
     display: inline-block;
 
     height: 2px;
-    width: 100%;
+    width: 50%;
 
     bottom: 0;
     right: 0;
@@ -130,6 +161,8 @@ h2.section-title::before {
     align-items: center;
 
     height: 90px;
+
+    transition: border 1s ease;
 }
 
 .navbar .navbar-brands {
@@ -145,7 +178,7 @@ h2.section-title::before {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    transition: transform cubic-bezier(.64,.49,.23,.71) 0.75s;
+    transition: transform cubic-bezier(.64, .49, .23, .71) 0.75s;
 }
 
 .navbar .navbar-brands img:hover {
@@ -201,7 +234,7 @@ h2.section-title::before {
     color: var(--black-900);
 
     font-weight: 400;
-    font-family: var(--font-sans), sans-serif;
+    font-family: var(--font-mono), monospace;
 
     transition: 0.3s ease;
 }
@@ -234,6 +267,7 @@ h2.section-title::before {
     cursor: pointer;
     font-size: 14px;
     transition: color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar .navbar-button a::before {
@@ -305,13 +339,9 @@ h2.section-title::before {
     margin-bottom: 24px;
 }
 
-.heroSection-content .btn-container {
-    gap: 0 16px;
-}
-
 /* *** Colors Section *** */
 .colorsSection {
-    padding: 10vh 1vw;
+    padding: 10vh 5vw;
 
     display: flex;
     justify-content: space-around;
@@ -348,5 +378,266 @@ h2.section-title::before {
 
 /* *** About Section *** */
 section.section.aboutSection {
+    display: flex;
+    align-items: center;
     padding: 10vh 5vw;
+    background-color: rgba(232, 232, 232, 0.7);
+    height: 100vh;
+}
+
+div.aboutSection-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.aboutSection-container div.aboutSection-content {
+    flex: 0 0 40%;
+    max-width: 40%;
+
+    text-align: center;
+}
+
+div.aboutSection-container div.chief-container {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 512px;
+    height: 512px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+div.aboutSection-container .chief-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(180deg, #00FFAE, #00b47c, #00FFAE);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+}
+
+div.aboutSection-container .chief-container img {
+    display: block;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+div.aboutSection-container div.aboutSection-content h2 {
+    margin: 10px 0 20px;
+}
+
+div.aboutSection-container div.aboutSection-content p {
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+div.aboutSection-container div.aboutSection-content div.btn-container {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+div.aboutSection-container div.aboutSection-list {
+    flex: 0 0 40%;
+    max-width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px 0;
+}
+
+div.aboutSection-container div.aboutSection-list .list {
+    margin-bottom: 2.5vh;
+    padding: 2.5vh;
+    background-color: var(--white-900);
+    border-radius: var(--border-radius-m);
+}
+
+div.aboutSection-container div.aboutSection-list .list:last-of-type {
+    margin-bottom: 0;
+}
+
+div.aboutSection-container div.aboutSection-list h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+div.aboutSection-container div.aboutSection-list h2 span {
+    font-family: var(--font-mono), monospace;
+    font-style: italic;
+    color: var(--green);
+}
+
+div.aboutSection-container div.aboutSection-list ul li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+}
+
+div.aboutSection-container div.aboutSection-list ul li img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+/* *** Projects Section *** */
+:root {
+    --gap: 20px;
+}
+
+.section.projectsSection {
+    padding: 10vh 5vw;
+    position: relative;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.projectsSection-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius-m);
+    padding: 12px;
+    background: #ffffff;
+    transition: 0.3s ease;
+}
+
+#project-slider {
+    display: inline-flex;
+    gap: var(--gap);
+    transition: transform 0.6s ease;
+    padding: 6px;
+    will-change: transform;
+}
+
+.project-item {
+    flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
+    max-width: calc((100% - (2 * var(--gap))) / 3);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .project-item {
+        flex: 0 0 calc((100% - (1 * var(--gap))) / 2);
+    }
+}
+
+@media (max-width: 520px) {
+    .project-item {
+        flex: 0 0 100%;
+    }
+}
+
+.project-item:hover .hover {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-item .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: 0.3s ease;
+}
+
+.project-item .hover p {
+    font-size: 16px;
+    color: var(--white-900);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-family: var(--font-sans), sans-serif;
+}
+
+.project-item .hover a {
+    background-color: var(--green);
+    color: var(--black-900);
+}
+
+.project-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* *** Contact Section *** */
+.contactSection {
+    margin: 5vh 5vw;
+}
+
+.contactSection-inner div.contactSection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactSection-inner div.contactSection-header div.contactSection-content {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.contactSection-inner div.contactSection-header div.contactSection-image {
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.contactSection-inner div.contactSection-header div.contactSection-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }

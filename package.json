@@ -1,0 +1,10 @@
+{
+  "name": "gabin_portfolio",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "private": true
+}
